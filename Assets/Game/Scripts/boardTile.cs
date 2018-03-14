@@ -29,6 +29,11 @@ public class boardTile{
     }
 
 
+    public void setNewSquare(int x, int y, bool empty) {
+        squares[y, x] = new tileSquare(empty);
+    }
+
+
     //Owner of the tile, null if nobody owns it
     public void setOwner(GameObject _owner) {
         owner = _owner;
@@ -108,7 +113,7 @@ public class boardTile{
          * | Top   Right |
          * | Bottom Left |
          */
-        Wall[,] sqWalls;
+        public Wall[,] sqWalls;
         bool empty;
         List<Door> sqDoors;
 
@@ -161,7 +166,7 @@ public class boardTile{
         public tileSquare(bool _empty) {
             sqDoors = null;
             sqWalls = null;
-            empty = true;
+            empty = _empty;
         }
         public List<Door> getDoors() {
             return sqDoors;

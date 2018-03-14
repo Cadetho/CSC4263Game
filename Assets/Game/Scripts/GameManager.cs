@@ -12,16 +12,26 @@ public class GameManager : MonoBehaviour {
 
     //private List<Tile> tilemap = new List<Tile>();
     private boardMap masterBoard = new boardMap();
-
+    private List<boardTile> tileDeck = new List<boardTile>();
 
     public GameObject prefabwall;
     public GameObject prefabdoor;
     public GameObject prefabopen;
     public GameObject prefabroom;
-    public const int tilesize = 16;
+    public GameObject prefabDoorRightOpen;
+    public GameObject prefabDoorLeftOpen;
+    public GameObject prefabDoorBothOpen;
+    public GameObject prefabWallRightOpen;
+    public GameObject prefabWallLeftOpen;
+    public GameObject prefabWallBothOpen;
+    public const int tilesize = 1;
+
+    public const int cardCount = 50;
+
 
 	void Start () {
-        // Create a test tilemap.
+        tileDeck = tileDeckGenerator.generateDeck(cardCount);
+        
         TestMap();
 
         GenerateLevel();
@@ -38,35 +48,101 @@ public class GameManager : MonoBehaviour {
             boardTile.Wall bottom = t.square.getBottom();
             boardTile.Wall left = t.square.getLeft();
             Vector3 boardPos = GridToPosition(t.boardX, t.boardY);
+            prefabs.Add(Instantiate(prefabroom, boardPos, qforward));
             if (top == boardTile.Wall.fullWall || top == boardTile.Wall.door) {
                 if (top == boardTile.Wall.fullWall) {
-                    prefabs.Add(Instantiate(prefabwall, boardPos, qforward));
+
+                    if (right == boardTile.Wall.noWall && left == boardTile.Wall.noWall) {
+                       prefabs.Add(Instantiate(prefabWallBothOpen, gridToTop(t.boardX, t.boardY), qforward));
+                    } else if(right == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallRightOpen, gridToTop(t.boardX, t.boardY), qforward));
+                    } else if(left == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallLeftOpen, gridToTop(t.boardX, t.boardY), qforward));
+                    } else {
+                        prefabs.Add(Instantiate(prefabwall, gridToTop(t.boardX, t.boardY), qforward));
+                    }
                 } else {
-                    prefabs.Add(Instantiate(prefabdoor, boardPos, qforward));
+                    if (right == boardTile.Wall.noWall && left == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorBothOpen, gridToTop(t.boardX, t.boardY), qforward));
+                    } else if (right == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorRightOpen, gridToTop(t.boardX, t.boardY), qforward));
+                    } else if (left == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorLeftOpen, gridToTop(t.boardX, t.boardY), qforward));
+                    } else {
+                        prefabs.Add(Instantiate(prefabdoor, gridToTop(t.boardX, t.boardY), qforward));
+                    }
                 }
             }
 
             if (right == boardTile.Wall.fullWall || right == boardTile.Wall.door) {
                 if(right == boardTile.Wall.fullWall) {
-                    prefabs.Add(Instantiate(prefabwall, boardPos, qright));
+                    if (bottom == boardTile.Wall.noWall && top == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallBothOpen, gridToRight(t.boardX, t.boardY), qright));
+                    } else if (bottom == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallRightOpen, gridToRight(t.boardX, t.boardY), qright));
+                    } else if (top == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallLeftOpen, gridToRight(t.boardX, t.boardY), qright));
+                    } else {
+                        prefabs.Add(Instantiate(prefabwall, gridToRight(t.boardX, t.boardY), qright));
+                    }
                 } else {
-                    prefabs.Add(Instantiate(prefabdoor, boardPos, qright));
+                    if (bottom == boardTile.Wall.noWall && top == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorBothOpen, gridToRight(t.boardX, t.boardY), qright));
+                    } else if (bottom == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorRightOpen, gridToRight(t.boardX, t.boardY), qright));
+                    } else if (top == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorLeftOpen, gridToRight(t.boardX, t.boardY), qright));
+                    } else {
+                        prefabs.Add(Instantiate(prefabdoor, gridToRight(t.boardX, t.boardY), qright));
+                    }
                 }
             }
 
             if (bottom == boardTile.Wall.fullWall || bottom == boardTile.Wall.door) {
                 if (bottom == boardTile.Wall.fullWall) {
-                    prefabs.Add(Instantiate(prefabwall, boardPos, qback));
+                    if (left == boardTile.Wall.noWall && right == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallBothOpen, gridToBottom(t.boardX, t.boardY), qback));
+                    } else if (left == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallRightOpen, gridToBottom(t.boardX, t.boardY), qback));
+                    } else if (right == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallLeftOpen, gridToBottom(t.boardX, t.boardY), qback));
+                    } else {
+                        prefabs.Add(Instantiate(prefabwall, gridToBottom(t.boardX, t.boardY), qback));
+                    }
                 } else {
-                    prefabs.Add(Instantiate(prefabdoor, boardPos, qback));
+                    if (left == boardTile.Wall.noWall && right == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorBothOpen, gridToBottom(t.boardX, t.boardY), qback));
+                    } else if (left == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorRightOpen, gridToBottom(t.boardX, t.boardY), qback));
+                    } else if (right == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorLeftOpen, gridToBottom(t.boardX, t.boardY), qback));
+                    } else {
+                        prefabs.Add(Instantiate(prefabdoor, gridToBottom(t.boardX, t.boardY), qback));
+                    }
                 }
             }
 
             if (left == boardTile.Wall.fullWall || left == boardTile.Wall.door) {
                 if(left == boardTile.Wall.fullWall) {
-                    prefabs.Add(Instantiate(prefabwall, boardPos, qleft));
+                    if (top == boardTile.Wall.noWall && bottom == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallBothOpen, gridToLeft(t.boardX, t.boardY), qleft));
+                    } else if (top == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallRightOpen, gridToLeft(t.boardX, t.boardY), qleft));
+                    } else if (bottom == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabWallLeftOpen, gridToLeft(t.boardX, t.boardY), qleft));
+                    } else {
+                        prefabs.Add(Instantiate(prefabwall, gridToLeft(t.boardX, t.boardY), qleft));
+                    }
                 } else {
-                    prefabs.Add(Instantiate(prefabdoor, boardPos, qleft));
+                    if (top == boardTile.Wall.noWall && bottom == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorBothOpen, gridToLeft(t.boardX, t.boardY), qleft));
+                    } else if (top == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorRightOpen, gridToLeft(t.boardX, t.boardY), qleft));
+                    } else if (bottom == boardTile.Wall.noWall) {
+                        prefabs.Add(Instantiate(prefabDoorLeftOpen, gridToLeft(t.boardX, t.boardY), qleft));
+                    } else {
+                        prefabs.Add(Instantiate(prefabdoor, gridToLeft(t.boardX, t.boardY), qleft));
+                    }
                 }
             }
 
@@ -199,12 +275,28 @@ public class GameManager : MonoBehaviour {
     /// <param name="x">Tilemap x coordinate</param>
     /// <param name="y">Tilemap y coordinate</param>
     /// <returns>A Vector3 of the position in 3D space.</returns>
+    /// 
     public Vector3 GridToPosition(int x, int y)
     {
-        pos.Set(x*tilesize, 0, -y*tilesize);
+        pos.Set(x, 0, -y);
         return pos;
     }
-    
+    public Vector3 gridToTop(int x, int y) {
+        pos.Set(x,0, -y);
+        return pos;
+    }
+    public Vector3 gridToRight(int x, int y) {
+        pos.Set(x , 0, -y-1);
+        return pos;
+    }
+    public Vector3 gridToBottom(int x, int y) {
+        pos.Set(x - 1, 0, -y - 1);
+        return pos;
+    }
+    public Vector3 gridToLeft(int x, int y) {
+        pos.Set(x -1, 0, -y);
+        return pos;
+    }
     // GENERATE A TEST TILEMAP
     void TestMap()
     {
@@ -226,7 +318,7 @@ public class GameManager : MonoBehaviour {
         boardTile t2 = new boardTile(1, 1);
         t2.setSquare(0, 0, new boardTile.Wall[] { door, wall, door, wall });
         boardTile t3 = new boardTile(2, 2);
-        t3.setSquare(0, 0, new boardTile.Wall[] { door, open, open, wall});
+        t3.setSquare(0, 0, new boardTile.Wall[] { door, open, open, door});
         t3.setSquare(1, 0, new boardTile.Wall[] { wall, door, open, open });
         t3.setSquare(0, 1, new boardTile.Wall[] { open, open, wall, door});
         t3.setSquare(1, 1, new boardTile.Wall[] { open, door, wall, open});
@@ -236,7 +328,7 @@ public class GameManager : MonoBehaviour {
 
         masterBoard.placeTile(50, 50, t1, true);
         masterBoard.placeTile(50, 49, t2);
-        //masterBoard.placeTile(51, 50, t3);
+        masterBoard.placeTile(51, 50, t3);
         //masterBoard.placeTile(49, 50, t4);
 
         //tilemap.Add(new TileCorner(0, 0, 0)

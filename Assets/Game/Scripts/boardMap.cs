@@ -17,7 +17,7 @@ public class boardMap{
 
     public bool placeTile(int x, int y, boardTile newTile, bool firstTile=false) {
         if (checkTileSpot(x, y, newTile) || firstTile) {
-            Debug.Log(newTile);
+            boardTiles[x, y] = newTile;
             for (int i = 0; i < newTile.yLen; i++) {
                 for (int j = 0; j < newTile.xLen; j++) {
                     board.Add(new placedTile(x+j, y+i, newTile.squares[i, j]));
