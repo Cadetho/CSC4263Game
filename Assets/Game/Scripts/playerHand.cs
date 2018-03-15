@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class playerHand {
-    GameObject player;
     private readonly int handSize = 7;
+    List<boardTile> tiles = new List<boardTile>();
 
-    public playerHand(GameObject _player) {
-        player = _player;
+    public bool addCard(boardTile newtile) {
+        bool added = true;
+        if(tiles.Count < handSize + 1) {
+            tiles.Add(newtile);
+        }
+        return added;
     }
-
+   
 }

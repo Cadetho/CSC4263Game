@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     //private List<Tile> tilemap = new List<Tile>();
     private boardMap masterBoard = new boardMap();
     private List<boardTile> tileDeck = new List<boardTile>();
-
+    private List<playerController> players = new List<playerController>();
     public GameObject prefabwall;
     public GameObject prefabdoor;
     public GameObject prefabopen;
@@ -27,16 +27,31 @@ public class GameManager : MonoBehaviour {
     public const int tilesize = 1;
 
     public const int cardCount = 50;
-
+    private const int handSize = 7;
+    playerController mainPlayer;
 
 	void Start () {
+        mainPlayer = new playerController(this);
+        players.Add(mainPlayer);
         tileDeck = tileDeckGenerator.generateDeck(cardCount);
-        
-        TestMap();
+        foreach(playerController player in players) {
+            player.drawCards(handSize);
+        }
+        //TestMap();
 
-        GenerateLevel();
+        //GenerateLevel();
     }
 
+    public boardTile drawCard() {
+        boardTile newCard;
+        newCard = tileDeck[0];
+        tileDeck.RemoveAt(0);
+        return newCard;
+    }
+
+    public bool deckNotEmpty() {
+        return (tileDeck.Count > 0);
+    }
     public void GenerateLevel() {
         // TODO: match doors & remove inside corner square in 2x2 tile
         List<GameObject> prefabs = new List<GameObject>();
