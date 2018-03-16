@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour{
 
-    playerHand hand = new playerHand();
+    private playerHand hand;
     GameManager gm;
     bool showHand;
     
@@ -19,7 +19,9 @@ public class playerController : MonoBehaviour{
             }
         }
     }
-
+    private void Start() {
+        hand = GetComponent<playerHand>();
+    }
 
     private void Update() {
         
