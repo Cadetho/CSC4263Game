@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 public class tileDeckGenerator{
     static double doorP = 0.6;
@@ -10,14 +11,14 @@ public class tileDeckGenerator{
 
     public static List<boardTile> generateDeck(int cardCount, int seed = 0) {
         List<boardTile> newDeck = new List<boardTile>();
-        Random randomNum = new Random();
+        System.Random randomNum = new System.Random();
         for (int i = 0; i < cardCount; i++) {
             newDeck.Add(generateTile(randomNum));
         }
         return newDeck;
     }
 
-    private static boardTile generateTile(Random randomNum) {
+    private static boardTile generateTile(System.Random randomNum) {
         boardTile tile;
         double xLenChance = randomNum.NextDouble();
         double yLenChance = randomNum.NextDouble();
@@ -69,22 +70,58 @@ public class tileDeckGenerator{
                 setBottom = true;
                 setLeft = true;
                 if (y+1 < yLen) {
-                    setBottom = !(tile.squares[y + 1, x].isEmpty());
+                    setBottom = tile.squares[y + 1, x].isEmpty();
                 }
-                if(y-1 > 0) {
-                    setTop = !(tile.squares[y - 1, x].isEmpty());
+                if(y-1 >= 0) {
+                    setTop = tile.squares[y - 1, x].isEmpty();
                 }
                 if(x+1 < xLen) {
-                    setRight = !(tile.squares[y, x + 1].isEmpty());
+                    setRight = tile.squares[y, x + 1].isEmpty();
                 }
-                if(x-1 > 0){
-                    setLeft = !(tile.squares[y, x - 1].isEmpty());
+                if(x-1 >= 0){
+                    setLeft = tile.squares[y, x - 1].isEmpty();
                 }
-                top = (setTop) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
-                right = (setRight) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
-                bottom = (setBottom) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
-                left = (setTop) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
-                if(top == door || right == door || bottom == door || left == door) {
+                if (setTop) {
+                    if(randomNum.NextDouble() < doorP) {
+                        top = boardTile.Wall.door;
+                    } else {
+                        top = boardTile.Wall.fullWall;
+                    }
+                } else {
+                    top = boardTile.Wall.noWall;
+                }
+                //top = (setTop) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
+                if (setRight) {
+                    if (randomNum.NextDouble() < doorP) {
+                        right = boardTile.Wall.door;
+                    } else {
+                        right = boardTile.Wall.fullWall;
+                    }
+                } else {
+                    right = boardTile.Wall.noWall;
+                }
+                //right = (setRight) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
+                if (setBottom) {
+                    if (randomNum.NextDouble() < doorP) {
+                        bottom = boardTile.Wall.door;
+                    } else {
+                        bottom = boardTile.Wall.fullWall;
+                    }
+                } else {
+                    bottom = boardTile.Wall.noWall;
+                }
+                //bottom = (setBottom) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
+                if (setLeft) {
+                    if (randomNum.NextDouble() < doorP) {
+                        left = boardTile.Wall.door;
+                    } else {
+                        left = boardTile.Wall.fullWall;
+                    }
+                } else {
+                    left = boardTile.Wall.noWall;
+                }
+                //left = (setTop) ? ((randomNum.NextDouble() < doorP) ? boardTile.Wall.door : boardTile.Wall.fullWall) : boardTile.Wall.noWall;
+                if (top == door || right == door || bottom == door || left == door) {
                     hasDoor = true;
                 }
                 tile.setSquare(x, y, new boardTile.Wall[]{top, right, bottom, left});

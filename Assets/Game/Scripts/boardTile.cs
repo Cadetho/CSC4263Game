@@ -94,7 +94,7 @@ public class boardTile{
 
 
     public struct Door {
-        int x, y;
+        public int x, y;
         public edgeLoc facing;
         public Door(int _x, int _y, edgeLoc _facing) {
             x = _x;

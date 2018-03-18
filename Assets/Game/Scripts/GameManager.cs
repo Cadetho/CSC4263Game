@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     private Quaternion qleft = Quaternion.LookRotation(Vector3.left, Vector3.up);
 
     //private List<Tile> tilemap = new List<Tile>();
-    private boardMap masterBoard = new boardMap();
+    public boardMap masterBoard = new boardMap();
     private List<boardTile> tileDeck = new List<boardTile>();
     private List<playerController> players = new List<playerController>();
     public GameObject prefabwall;
@@ -24,19 +24,21 @@ public class GameManager : MonoBehaviour {
     public GameObject prefabWallRightOpen;
     public GameObject prefabWallLeftOpen;
     public GameObject prefabWallBothOpen;
+    public ObjectPlacementController boardController;
     public const int tilesize = 1;
+    public GameObject selectedCard;
 
-    public const int cardCount = 50;
+    public const int cardCount = 6;
     private const int handSize = 7;
-    playerController mainPlayer;
+    public playerController mainPlayer;
 
 	void Start () {
-        mainPlayer = new playerController(this);
         players.Add(mainPlayer);
         tileDeck = tileDeckGenerator.generateDeck(cardCount);
         foreach(playerController player in players) {
             player.drawCards(handSize);
         }
+        placeDefaultTile();
         //TestMap();
 
         //GenerateLevel();
@@ -51,6 +53,25 @@ public class GameManager : MonoBehaviour {
 
     public bool deckNotEmpty() {
         return (tileDeck.Count > 0);
+    }
+    public void placeDefaultTile() {
+        boardTile defaultTile = new boardTile(1, 1);
+        defaultTile.setSquare(0, 0, new boardTile.Wall[] { boardTile.Wall.door, boardTile.Wall.door, boardTile.Wall.door, boardTile.Wall.door });
+        masterBoard.placeTile(0 , 0, defaultTile, true);
+        GameObject gridCard = boardController.createGridCard(defaultTile);
+        boardController.setGridCardSpot(0, 0, defaultTile, gridCard);
+        boardController.setGridCardSpot(0, 0, defaultTile, gridCard);
+    }
+
+    public void selectCard(cardController card){
+        selectedCard = boardController.createGridCard(card.tile);
+        //boardController.selectedCard(selectedCard);
+    }
+    public void placeCard(int x, int y, boardTile tile) {
+        masterBoard.placeTile(x, y, tile);
+    }
+    public bool checkBoardSpot(int x, int y, boardTile tile) {
+        return masterBoard.checkTileSpot(x, y, tile);
     }
     public void GenerateLevel() {
         // TODO: match doors & remove inside corner square in 2x2 tile
