@@ -30,6 +30,8 @@ public class ObjectPlacementController : MonoBehaviour {
     public GameObject prefabWall;
     public GameObject prefabDoor;
     public GameManager gm;
+    public Camera playCamera;
+    public Camera placeCamera;
     Vector2 boardLen;
     Vector2 center;
 
@@ -96,7 +98,8 @@ public class ObjectPlacementController : MonoBehaviour {
 
     public void hideBoard() {
         gameBoard.SetActive(false);
-        Camera.main.GetComponent<cameraController>().hideGrid();
+        placeCamera.enabled = false;
+        playCamera.enabled = true;
     }
     public void showBoard() {
         gameBoard.SetActive(true);

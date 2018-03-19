@@ -10,16 +10,22 @@ public class cameraController : MonoBehaviour {
     private int startY;
     private int endY;
     private Material lineMaterial;
+    private Material lastMaterial;
+    private MeshRenderer meshRenderer;
     public Color mainColor = new Color(0f, 1f, 0f, 0.1f);
     int step = 1;
-    Camera cam;
     public Shader shader;
+    Camera cam;
     /* 
      * This method will create the gameBoard plane as soon as the objectPlacementController is instantiated
      */
 
     void OnPostRender() {
+        meshRenderer = GetComponent<MeshRenderer>();
+        lastMaterial = meshRenderer.material;
+ 
         CreateLineMaterial();
+        meshRenderer.material = lineMaterial;
         lineMaterial.SetPass(0);
         GL.Begin(GL.LINES);
         GL.Color(mainColor);
@@ -63,13 +69,6 @@ public class cameraController : MonoBehaviour {
         }
     }
 
-    public void hideGrid() {
-        GL.Begin(GL.LINES);
-        GL.PopMatrix();
-        GL.Clear(true, true, Color.clear);
-        GL.PushMatrix();
-        GL.End();
-    }
     void Update () {
 		
 	}
