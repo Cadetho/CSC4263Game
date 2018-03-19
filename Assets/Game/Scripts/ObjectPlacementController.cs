@@ -44,22 +44,26 @@ public class ObjectPlacementController : MonoBehaviour {
     public Vector3 mousePos;
     public Ray castPoint;
     public RaycastHit hit;
+    GameObject gameBoard;
+    bool boardReady = false;
 
     private void Start() {
-
+        gameBoard = GameObject.CreatePrimitive(PrimitiveType.Plane);
         Vector3 temp = new Vector3(1, 1, Camera.main.nearClipPlane);
         float distance = Camera.main.ViewportToWorldPoint(temp).y;
         int endX = (int)(Camera.main.ViewportToWorldPoint(new Vector3(1, 1, distance)).x * 1.2);
         int startX = (int)(Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance)).x * 1.2);
         int startY = (int)(Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance)).z * 1.2);
         int endY = (int)(Camera.main.ViewportToWorldPoint(new Vector3(1, 1, distance)).z * 1.2);
-        GameObject gameBoard = GameObject.CreatePrimitive(PrimitiveType.Plane);
         boardLen.x = endX - startX;
         boardLen.y = endX - startX;
         center = new Vector2(boardLen.x / 2, boardLen.y / 2);
         gameBoard.transform.localScale = new Vector3(boardLen.x, 1f, boardLen.y);
         gameBoard.GetComponent<MeshRenderer>().enabled = false;
+        gm.placeDefaultTile();
     }
+
+
     private void Update () {
 
         HandleNewObjectHotkey();
@@ -76,6 +80,7 @@ public class ObjectPlacementController : MonoBehaviour {
     public GameObject createGridCard(boardTile newTile){
         //Vector2 gridPosition = new Vector2(center.x + x, center.y + y);
         GameObject newGridCard = new GameObject();
+        newGridCard.transform.SetParent(gameBoard.transform);
         //newGridCard.transform.position = new Vector3(center.x + x, 1.4f, center.y + y);
         for(int i = 0; i < newTile.yLen; i++) {
             for(int j = 0; j < newTile.xLen; j++) {
@@ -89,6 +94,13 @@ public class ObjectPlacementController : MonoBehaviour {
         return newGridCard;
     }
 
+    public void hideBoard() {
+        gameBoard.SetActive(false);
+        Camera.main.GetComponent<cameraController>().hideGrid();
+    }
+    public void showBoard() {
+        gameBoard.SetActive(true);
+    }
     public void setGridCardSpot(int x, int y, boardTile tile, GameObject card) {
         Vector2 gridPosition = new Vector2(center.x + x, center.y + y);
         card.transform.position = new Vector3(x, 0, y);

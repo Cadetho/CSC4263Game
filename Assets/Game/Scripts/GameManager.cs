@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour {
         foreach(playerController player in players) {
             player.drawCards(handSize);
         }
-        placeDefaultTile();
         //TestMap();
 
         //GenerateLevel();
@@ -50,7 +49,10 @@ public class GameManager : MonoBehaviour {
         tileDeck.RemoveAt(0);
         return newCard;
     }
-
+    public void switchToPlayPhase() {
+        boardController.hideBoard();
+        GenerateLevel();
+    }
     public bool deckNotEmpty() {
         return (tileDeck.Count > 0);
     }

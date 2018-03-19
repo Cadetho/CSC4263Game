@@ -48,6 +48,6 @@ Shader "Custom/gridLineShader" {
 				return i.color;
 			}
 			ENDCG  
-		}  
+		}
 	}
 }

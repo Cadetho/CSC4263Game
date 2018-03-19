@@ -23,7 +23,7 @@ public class cameraController : MonoBehaviour {
         lineMaterial.SetPass(0);
         GL.Begin(GL.LINES);
         GL.Color(mainColor);
-
+        GL.PushMatrix();
         for(int i = 0; i < gridSize; i+=step) {
             GL.Vertex3(startX, 0, startY + i + 0.5f);
             GL.Vertex3(endX, 0, startY + i + 0.5f);
@@ -31,7 +31,9 @@ public class cameraController : MonoBehaviour {
             GL.Vertex3(startX + i + 0.5f, 0, startY);
             GL.Vertex3(startX + i + 0.5f, 0, endY);
         }
+
         GL.End();
+        GL.PopMatrix();
     }
     void Start() {
         cam = GetComponent<Camera>();
@@ -59,6 +61,14 @@ public class cameraController : MonoBehaviour {
             // Turn off depth writes
             lineMaterial.SetInt("_ZWrite", 0);
         }
+    }
+
+    public void hideGrid() {
+        GL.Begin(GL.LINES);
+        GL.PopMatrix();
+        GL.Clear(true, true, Color.clear);
+        GL.PushMatrix();
+        GL.End();
     }
     void Update () {
 		
