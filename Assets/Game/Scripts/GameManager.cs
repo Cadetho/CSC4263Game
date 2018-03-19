@@ -11,20 +11,28 @@ public class GameManager : MonoBehaviour {
     private Quaternion qleft = Quaternion.LookRotation(Vector3.left, Vector3.up);
 
     private List<Tile> tilemap = new List<Tile>();
-
+    [Space]
+    public Transform levelParent = null;
+    public int tilesize = 16;
+    [Header("Level Construction Prefabs")]
     public GameObject prefabwall;
     public GameObject prefabdoor;
     public GameObject prefabopen;
     public GameObject prefabroom;
-    public const int tilesize = 16;
 
-	void Start () {
+    void Start () {
+        if (levelParent == null)
+        {
+            GameObject go = new GameObject("Environment");
+            levelParent = go.transform;
+        }
         // Create a test tilemap.
         TestMap();
 
         GenerateLevel();
     }
     
+    [ContextMenu("Generate Level")]
     public void GenerateLevel()
     {
         // TODO: match doors & remove inside corner square in 2x2 tile
@@ -40,11 +48,10 @@ public class GameManager : MonoBehaviour {
             {
                 int sqx = squares[i, 0];
                 int sqy = squares[i, 1];
-                int x = t.XPos + sqx;
-                int y = t.YPos + sqy;
+                GridToPosition(t.XPos + sqx, t.YPos + sqy);
 
                 // Place the room center/floor prefab
-                prefabs.Add(Instantiate(prefabroom, GridToPosition(x, y), qforward));
+                prefabs.Add(Instantiate(prefabroom, pos, qforward));
                 // Place the wall/door/open prefabs
                 bool topsquare = (sqy == 0);
                 if (!topsquare) // check if there's a square above
@@ -61,11 +68,11 @@ public class GameManager : MonoBehaviour {
                 }
                 if (topsquare)
                 {
-                    prefabs.Add(Instantiate((t.TopWall[sqx] == Wall.Door ? prefabdoor : prefabwall), GridToPosition(x, y), qforward));
+                    prefabs.Add(Instantiate((t.TopWall[sqx] == Wall.Door ? prefabdoor : prefabwall), pos, qforward));
                 }
                 else
                 {
-                    prefabs.Add(Instantiate(prefabopen, GridToPosition(x, y), qforward));
+                    prefabs.Add(Instantiate(prefabopen, pos, qforward));
                 }
 
                 bool rightsquare = (sqx == tw - 1);
@@ -83,11 +90,11 @@ public class GameManager : MonoBehaviour {
                 }
                 if (rightsquare)
                 {
-                    prefabs.Add(Instantiate((t.RightWall[sqy] == Wall.Door ? prefabdoor : prefabwall), GridToPosition(x, y), qright));
+                    prefabs.Add(Instantiate((t.RightWall[sqy] == Wall.Door ? prefabdoor : prefabwall), pos, qright));
                 }
                 else
                 {
-                    prefabs.Add(Instantiate(prefabopen, GridToPosition(x, y), qright));
+                    prefabs.Add(Instantiate(prefabopen, pos, qright));
                 }
 
                 bool bottomsquare = (sqy == th - 1);
@@ -106,11 +113,11 @@ public class GameManager : MonoBehaviour {
                 if (bottomsquare)
                 {
                     int wi = tw - sqx - 1;
-                    prefabs.Add(Instantiate((t.BottomWall[wi] == Wall.Door ? prefabdoor : prefabwall), GridToPosition(x, y), qback));
+                    prefabs.Add(Instantiate((t.BottomWall[wi] == Wall.Door ? prefabdoor : prefabwall), pos, qback));
                 }
                 else
                 {
-                    prefabs.Add(Instantiate(prefabopen, GridToPosition(x, y), qback));
+                    prefabs.Add(Instantiate(prefabopen, pos, qback));
                 }
 
                 bool leftsquare = (sqx == 0);
@@ -129,29 +136,22 @@ public class GameManager : MonoBehaviour {
                 if (leftsquare)
                 {
                     int wi = th - sqy - 1;
-                    prefabs.Add(Instantiate((t.LeftWall[wi] == Wall.Door ? prefabdoor : prefabwall), GridToPosition(x, y), qleft));
+                    prefabs.Add(Instantiate((t.LeftWall[wi] == Wall.Door ? prefabdoor : prefabwall), pos, qleft));
                 }
                 else
                 {
-                    prefabs.Add(Instantiate(prefabopen, GridToPosition(x, y), qleft));
+                    prefabs.Add(Instantiate(prefabopen, pos, qleft));
                 }
             }
         }
-        //foreach (GameObject pf in prefabs)
-        //{
-        //    if (pf.GetType() == prefabdoor.GetType())
-        //    {
-        //        if (pf.name == string.Format("{0}(Clone)", prefabdoor.name))
-        //        {
-
-        //        }
-        //    }
-        //}
+        foreach (GameObject pf in prefabs)
+        {
+            pf.transform.parent = levelParent;
+        }
     }
 
 
     // Initialized Vector3 used for prefab positions. Changes each time TilePos is called.
-    // This is used so we don't have to allocate memory for a new Vector3 each time this method is called.
     private Vector3 pos = new Vector3();
     /// <summary>
     /// Converts tilemap grid coordinates to a Vector3 to be used for transform positions, based on the tilesize field.
@@ -166,8 +166,16 @@ public class GameManager : MonoBehaviour {
     }
     
     // GENERATE A TEST TILEMAP
+    [ContextMenu("Create Test Map")]
     void TestMap()
     {
+        if (levelParent == null)
+        {
+            GameObject go = new GameObject("Environment");
+            go.AddComponent<Transform>();
+            levelParent = go.transform;
+        }
+        tilemap = new List<Tile>();
         Tile.DoorProbability = 0.3f;
         Wall wc = Wall.Closed;
         Wall wd = Wall.Door;
