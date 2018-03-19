@@ -29,6 +29,7 @@ public class ObjectPlacementController : MonoBehaviour {
     private boardTile currentPlaceableTile;
     public GameObject prefabWall;
     public GameObject prefabDoor;
+    GameObject currentPlaceableHandCard;
     public GameManager gm;
     public Camera playCamera;
     public Camera placeCamera;
@@ -187,6 +188,7 @@ public class ObjectPlacementController : MonoBehaviour {
                         setGridCardSpot(checkSpotX, checkSpotY, currentPlaceableTile, currentPlaceableObject);
                         //Destroy(currentPlaceableObject);
                         gm.placeCard(checkSpotX, checkSpotY, currentPlaceableTile);
+                        gm.replaceCardForCurrentPlayer(currentPlaceableHandCard);
                         currentPlaceableTile = null;
                         currentPlaceableObject = null;
                     }
@@ -196,9 +198,10 @@ public class ObjectPlacementController : MonoBehaviour {
             rotation = 0;
         }
     }   
-    public void selectedCard(GameObject card, boardTile tile) {
+    public void selectedCard(GameObject card, boardTile tile, GameObject handCard) {
         currentPlaceableObject = card;
         currentPlaceableTile = tile;
+        currentPlaceableHandCard = handCard;
     }
     /* 
      * This method will allow the player to rotate the placeable object with the left and right arrows

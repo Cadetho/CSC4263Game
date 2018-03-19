@@ -27,12 +27,28 @@ public class playerHand : MonoBehaviour{
 
         return added;
     }
-   private void showNewCard(boardTile newTile) {
+
+   public void replaceCard(boardTile newTile, GameObject oldCard) {
+        currentClickedCard = null;
         GameObject newTileButton = Instantiate(cardPrefab);
         RectTransform newRect = newTileButton.GetComponent<RectTransform>();
         cardController cardC = newTileButton.GetComponent<cardController>();
         cardC.setTile(newTile);
         cardC.setParent(this);
+        newRect.SetParent(handPanel);
+        newRect.anchorMin = oldCard.GetComponent<RectTransform>().anchorMin;
+        newRect.anchorMax = oldCard.GetComponent<RectTransform>().anchorMax;
+        newRect.offsetMin = Vector2.zero;
+        newRect.offsetMax = Vector2.zero;
+        Destroy(oldCard);
+    }
+    private void showNewCard(boardTile newTile) {
+        GameObject newTileButton = Instantiate(cardPrefab);
+        RectTransform newRect = newTileButton.GetComponent<RectTransform>();
+        cardController cardC = newTileButton.GetComponent<cardController>();
+        cardC.setTile(newTile);
+        cardC.setParent(this);
+
         newRect.SetParent(handPanel);
         newRect.anchorMin = new Vector2(cardNextOffset, 0);
         newRect.anchorMax = new Vector2(cardNextOffset + cardWidth, 1);
@@ -41,7 +57,7 @@ public class playerHand : MonoBehaviour{
         cardNextOffset += cardWidth + cardOffsetAmount;
     }
 
-    public void cardClicked(cardController card) {
+    public void cardClicked(cardController card, GameObject cardObj) {
         if(currentClickedCard != null && gridController.currentPlaceableObject != null) {
             currentClickedCard.unselect();
             Destroy(selectedCard);
@@ -50,7 +66,7 @@ public class playerHand : MonoBehaviour{
         currentClickedCard = card;
         currentClickedCard.select();
         selectedCard = gridController.createGridCard(card.tile);
-        gridController.selectedCard(selectedCard, card.tile);
+        gridController.selectedCard(selectedCard, card.tile, cardObj);
        // GameManager.selectedCard(currentClickedCard);
     }
 }

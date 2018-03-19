@@ -17,7 +17,10 @@ public class playerController : MonoBehaviour{
             }
         }
     }
-
+    public void replaceCard(GameObject handCard) {
+        boardTile newTile = gm.drawCard();
+        hand.replaceCard(newTile, handCard);
+    }
 
     private void Start() {
         hand = GetComponent<playerHand>();

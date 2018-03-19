@@ -98,6 +98,7 @@ public class boardMap{
     private bool checkLocation(int x, int y, boardTile newTile) {
         int xLen = newTile.xLen;
         int yLen = newTile.yLen;
+        Debug.Log(xLen + " " + yLen);
         bool clear = true;
         for (int i = 0; i < yLen; i++) {
             for (int j = 0; j < xLen; j++) {

@@ -152,7 +152,7 @@ public class cardController : MonoBehaviour {
         }
     }
     public void onClick() {
-        parent.cardClicked(this);
+        parent.cardClicked(this, gameObject);
     }
     public void unselect() {
         shader.DisableKeyword("_Emission");
@@ -162,5 +162,9 @@ public class cardController : MonoBehaviour {
         //gm.selectCard(this);
         shader.EnableKeyword("_Emission");
         selected = true;
+    }
+
+    public void replaceWithNew() {
+
     }
 }

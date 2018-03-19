@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114195995114871832}
   m_Layer: 5
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938945778150888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15.497283}
+  m_LocalPosition: {x: 0, y: 0, z: -43.54595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224901700819018018}
@@ -254,7 +254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.395533, y: 8.599398}
+  m_AnchoredPosition: {x: -2.2151165, y: 11.406618}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224711182910119298

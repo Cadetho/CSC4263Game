@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     public const int tilesize = 1;
     public GameObject selectedCard;
 
-    public const int cardCount = 6;
+    public const int cardCount = 50;
     private const int handSize = 7;
     public playerController mainPlayer;
 
@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour {
 
         //GenerateLevel();
     }
-
+    public void replaceCardForCurrentPlayer(GameObject handCard) {
+        mainPlayer.replaceCard(handCard);
+    }
     public boardTile drawCard() {
         boardTile newCard;
         newCard = tileDeck[0];
