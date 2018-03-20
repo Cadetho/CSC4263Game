@@ -69,7 +69,7 @@ public class ObjectPlacementController : MonoBehaviour {
 
     private void Update () {
 
-        HandleNewObjectHotkey();
+        //HandleNewObjectHotkey();
 
         if (currentPlaceableObject != null)//this if statement handles all of the object movement methods
         {
@@ -100,7 +100,7 @@ public class ObjectPlacementController : MonoBehaviour {
     public void hideBoard() {
         gameBoard.SetActive(false);
         placeCamera.enabled = false;
-        playCamera.enabled = true;
+        placeCamera.GetComponent<AudioListener>().enabled = false;
     }
     public void showBoard() {
         gameBoard.SetActive(true);

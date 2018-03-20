@@ -32,9 +32,9 @@ public class CharacterController : MonoBehaviour
 
 	// movement variables
     [Header("Movement")]
-	public float walkSpeed = 1.35f;
+	public float walkSpeed = .27f;
 	float moveSpeed;
-	public float runSpeed = 6f;
+	public float runSpeed = 1.2f;
 	float rotationSpeed = 40f;
 	Vector3 inputVec;
 	Vector3 newVelocity;

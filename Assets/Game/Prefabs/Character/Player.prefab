@@ -1493,7 +1493,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444857169853110}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1515,7 +1515,7 @@ Transform:
   - {fileID: 4660519526143566}
   - {fileID: 4682278281745416}
   m_Father: {fileID: 4812930055185336}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4045782553963874
 Transform:
@@ -2399,11 +2399,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1300319127133076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 0, z: -32}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.617778, y: -6.7692695, z: 0.4974886}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
-  - {fileID: 4044040327728214}
   - {fileID: 4971197109298914}
+  - {fileID: 4044040327728214}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2628,13 +2628,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640518206032196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4738330577687782}
   m_Father: {fileID: 4812930055185336}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4976517657864252
 Transform:
@@ -2952,10 +2952,10 @@ MonoBehaviour:
   sceneCamera: {fileID: 20051407661984712}
   useNavMesh: 0
   goal: {fileID: 0}
-  walkSpeed: 2
-  runSpeed: 4
+  walkSpeed: 0.4
+  runSpeed: 0.8
   canMove: 1
-  rollSpeed: 12
+  rollSpeed: 2.4
   rollDuration: 0.25
   rollCooldown: 0.25
   isRelax: 0
@@ -2999,7 +2999,7 @@ MonoBehaviour:
   m_Target: {fileID: 4044040327728214}
   m_AutoTargetPlayer: 1
   m_UpdateType: 1
-  m_MoveSpeed: 5
+  m_MoveSpeed: 1
   m_TurnSpeed: 0
   m_TurnSmoothing: 0
   m_TiltMax: 75

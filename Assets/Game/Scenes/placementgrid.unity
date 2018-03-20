@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -280,6 +280,10 @@ MonoBehaviour:
     type: 2}
   boardController: {fileID: 556087301}
   selectedCard: {fileID: 0}
+  characterPrefab: {fileID: 1300319127133076, guid: d0793359944f9d943a5736710eda255b,
+    type: 2}
+  enemyPrefab: {fileID: 1270526129368252, guid: e6af1e73ffbd1d247a1eb085ce322e53,
+    type: 2}
   mainPlayer: {fileID: 1992919695}
 --- !u!4 &52193957
 Transform:
