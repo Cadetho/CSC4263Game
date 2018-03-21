@@ -27,7 +27,12 @@ public class playerHand : MonoBehaviour{
 
         return added;
     }
-
+    public void hide() {
+        handPanel.gameObject.SetActive(false);
+    }
+    public void show() {
+        handPanel.gameObject.SetActive(true);
+    }
    public void replaceCard(boardTile newTile, GameObject oldCard) {
         currentClickedCard = null;
         GameObject newTileButton = Instantiate(cardPrefab);

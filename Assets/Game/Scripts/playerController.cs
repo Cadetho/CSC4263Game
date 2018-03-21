@@ -6,7 +6,6 @@ public class playerController : MonoBehaviour{
 
     private playerHand hand;
     public GameManager gm;
-    bool showHand;
 
 
 
@@ -16,6 +15,12 @@ public class playerController : MonoBehaviour{
                 hand.addCard(gm.drawCard());
             }
         }
+    }
+    public void hideHand() {
+        hand.hide();
+    }
+    public void showHand() {
+        hand.show();
     }
     public void replaceCard(GameObject handCard) {
         boardTile newTile = gm.drawCard();

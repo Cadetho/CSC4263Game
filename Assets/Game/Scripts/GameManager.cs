@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
     public void switchToPlayPhase() {
         boardController.hideBoard();
         GenerateLevel();
+        mainPlayer.hideHand();
         GameObject character = Instantiate(characterPrefab);
         character.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
         GameObject enemy = Instantiate(enemyPrefab);
