@@ -24,14 +24,17 @@ public class GameManager : MonoBehaviour {
     public GameObject prefabWallRightOpen;
     public GameObject prefabWallLeftOpen;
     public GameObject prefabWallBothOpen;
+    public GameObject prefabBoss;
     public ObjectPlacementController boardController;
     public const int tilesize = 1;
     public GameObject selectedCard;
     public GameObject characterPrefab;
     public GameObject enemyPrefab;
+    private GameObject bossDoor;
     public const int cardCount = 50;
     private const int handSize = 7;
     public playerController mainPlayer;
+    public GameObject boss;
 
 	void Start () {
         players.Add(mainPlayer);
@@ -72,6 +75,21 @@ public class GameManager : MonoBehaviour {
         GameObject gridCard = boardController.createGridCard(defaultTile);
         boardController.setGridCardSpot(0, 0, defaultTile, gridCard);
         boardController.setGridCardSpot(0, 0, defaultTile, gridCard);
+
+        boardTile bossTile = new boardTile(3, 3);
+        bossTile.setSquare(0, 0, new boardTile.Wall[] { boardTile.Wall.fullWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall });
+        bossTile.setSquare(1, 0, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
+        bossTile.setSquare(2, 0, new boardTile.Wall[] { boardTile.Wall.fullWall, boardTile.Wall.fullWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
+
+        bossTile.setSquare(0, 1, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall });
+        bossTile.setSquare(1, 1, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
+        bossTile.setSquare(2, 1, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
+
+        bossTile.setSquare(0, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.fullWall });
+        bossTile.setSquare(1, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.noWall });
+        bossTile.setSquare(2, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.fullWall, boardTile.Wall.noWall });
+
+        masterBoard.placeTile(0, -2, bossTile);
     }
 
     public void selectCard(cardController card){
@@ -85,9 +103,9 @@ public class GameManager : MonoBehaviour {
         return masterBoard.checkTileSpot(x, y, tile);
     }
     public void GenerateLevel() {
-        // TODO: match doors & remove inside corner square in 2x2 tile
         List<GameObject> prefabs = new List<GameObject>();
-        Debug.Log("creating tile at: ");
+        bossDoor = Instantiate(prefabWallBothOpen, gridToTop(0, -1), qforward);
+        boss = Instantiate(prefabBoss, GridToPosition(0, -2), qforward);
         foreach (placedTile t in masterBoard.board) {
 
             boardTile.Wall top = t.square.getTop();
@@ -120,7 +138,6 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
-
             if (right == boardTile.Wall.fullWall || right == boardTile.Wall.door) {
                 if(right == boardTile.Wall.fullWall) {
                     if (bottom == boardTile.Wall.noWall && top == boardTile.Wall.noWall) {
@@ -144,7 +161,6 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
-
             if (bottom == boardTile.Wall.fullWall || bottom == boardTile.Wall.door) {
                 if (bottom == boardTile.Wall.fullWall) {
                     if (left == boardTile.Wall.noWall && right == boardTile.Wall.noWall) {
@@ -168,7 +184,6 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
-
             if (left == boardTile.Wall.fullWall || left == boardTile.Wall.door) {
                 if(left == boardTile.Wall.fullWall) {
                     if (top == boardTile.Wall.noWall && bottom == boardTile.Wall.noWall) {
@@ -193,6 +208,10 @@ public class GameManager : MonoBehaviour {
                 }
             }
 
+            if (t.hasEnemies) {
+
+
+            }
             //int tw = t.Width;
             //int th = t.Height;
 
