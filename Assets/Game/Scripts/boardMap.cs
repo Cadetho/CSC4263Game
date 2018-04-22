@@ -32,9 +32,6 @@ public class boardMap{
         }
         return false;
     }
-    public void changeWall(int x, int y, int wallx, int wally, boardTile.Wall) {
-
-    }
     /*
      * Check a tile to the board location
      * x,y location of top-left corner of tile
