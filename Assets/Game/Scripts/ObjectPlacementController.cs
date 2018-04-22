@@ -184,6 +184,7 @@ public class ObjectPlacementController : MonoBehaviour {
                 if (Physics.Raycast(castPoint, out hit, Mathf.Infinity)) {
                     int checkSpotX = (int)Mathf.Floor(hit.point.x+ 0.5f);
                     int checkSpotY = (int)Mathf.Floor(hit.point.z + 0.5f);
+                    Console.WriteLine(checkSpotX + " " + checkSpotY);
                     if (gm.checkBoardSpot(checkSpotX, checkSpotY, currentPlaceableTile)) {
                         setGridCardSpot(checkSpotX, checkSpotY, currentPlaceableTile, currentPlaceableObject);
                         //Destroy(currentPlaceableObject);

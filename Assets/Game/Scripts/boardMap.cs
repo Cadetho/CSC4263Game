@@ -22,7 +22,8 @@ public class boardMap{
 
             for (int i = 0; i < newTile.yLen; i++) {
                 for (int j = 0; j < newTile.xLen; j++) {
-                    board.Add(new placedTile(x+j, y+i, newTile.squares[i, j]));
+                    Debug.Log(x + "  " + y + "   " + j + "    " + i);
+                    board.Add(new placedTile(x+j, -y+i, newTile.squares[i, j]));
                     tempTile = new boardTile(1, 1);
                     tempTile.setSquare(0, 0, new boardTile.Wall[] { newTile.squares[i, j].getTop(), newTile.squares[i, j].getRight(), newTile.squares[i, j].getBottom(), newTile.squares[i, j].getLeft() });
                     boardTiles[y + center + i, x + center + j] = tempTile;
@@ -49,41 +50,31 @@ public class boardMap{
 
         List<boardTile.Door> doors = newTile.getAllDoors();
         bool doorCheck = false;
-        Debug.Log(x + "," + y + "door  " + doors.Count);
         foreach (boardTile.Door door in doors) {
             switch (door.facing) {
                 case boardTile.edgeLoc.top:
-                    Debug.Log((door.y + y + 1) + "," + (door.y + y + 1));
                     if (boardTiles[door.y + y + 1, door.x + x] != null) {
-                        Debug.Log("checkdoor top");
                         if (boardTiles[y + 1 - door.y, x + door.x].squares[0, 0].bottomIsDoor()) {
                             doorCheck = true;
                         }
                     }
                     break;
                 case boardTile.edgeLoc.right:
-                    Debug.Log((door.y + y) + "," + (door.x + x + 1));
                     if (boardTiles[door.y + y,door.x + x + 1] != null) {
-                        Debug.Log("checkdoor right");
                         if (boardTiles[y - door.y, x + 1 + door.x].squares[0, 0].leftIsDoor()) {
                             doorCheck = true;
                         }
                     }
                     break;
                 case boardTile.edgeLoc.bottom:
-                    Debug.Log((y - 1 - door.y)+","+ (door.x + x));
                     if (boardTiles[y - 1 - door.y,door.x + x] != null) {
-                        Debug.Log("checkdoor bottom");
                         if (boardTiles[y - 1 - door.y, x+door.x].squares[0, 0].topIsDoor()) {
                             doorCheck = true;
                         }
                     }
                     break;
                 case boardTile.edgeLoc.left:
-                    Debug.Log((y - door.y) + "," + (door.x + x - 1));
-                    Debug.Log(door.y);
                     if (boardTiles[y - door.y, door.x + x - 1] != null) {
-                        Debug.Log("checkdoor left");
                         if (boardTiles[y - door.y, x - 1 + door.x].squares[0, 0].rightIsDoor()) {
                             doorCheck = true;
                         }

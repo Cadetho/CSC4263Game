@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour {
 
         boardTile bossTile = new boardTile(3, 3);
         bossTile.setSquare(0, 0, new boardTile.Wall[] { boardTile.Wall.fullWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall });
-        bossTile.setSquare(1, 0, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
+        bossTile.setSquare(1, 0, new boardTile.Wall[] { boardTile.Wall.door, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
         bossTile.setSquare(2, 0, new boardTile.Wall[] { boardTile.Wall.fullWall, boardTile.Wall.fullWall, boardTile.Wall.noWall, boardTile.Wall.noWall });
 
         bossTile.setSquare(0, 1, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall });
@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviour {
         bossTile.setSquare(2, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.fullWall, boardTile.Wall.noWall });
 
         masterBoard.placeTile(0, -2, bossTile);
+        GameObject bossRoomCard = boardController.createGridCard(bossTile);
+        boardController.setGridCardSpot(-1, -1, bossTile, bossRoomCard);
     }
 
     public void selectCard(cardController card){

@@ -99,6 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401630}
   - component: {fileID: 9526892}
+  - component: {fileID: 114910413086419872}
   m_Layer: 0
   m_Name: ArmoredGolem
   m_TagString: Untagged
@@ -399,7 +400,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122220}
   m_LocalRotation: {x: -0.000000021855694, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0555, z: 0}
+  m_LocalPosition: {x: 74.8401, y: 66.4526, z: -32.50933}
   m_LocalScale: {x: 0.029018238, y: 0.029018238, z: 0.029018238}
   m_Children:
   - {fileID: 485548}
@@ -849,3 +850,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122220}
   m_IsPrefabParent: 1
+--- !u!114 &114910413086419872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc50a9b7bc08cfb478386a97f17c893b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paceTime: 0
+  pauseTime: 0
+  playerInBossRoom: 0
+  targetPlayer: {fileID: 0}
+  attackRange: 0
+  moveSpeed: 0
+  pacingTo: {x: 0, y: 0, z: 0}
