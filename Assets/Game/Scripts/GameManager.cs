@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour {
         mainPlayer.hideHand();
         GameObject character = Instantiate(characterPrefab);
         character.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
-        GameObject enemy = Instantiate(enemyPrefab);
-        enemy.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
+        //GameObject enemy = Instantiate(enemyPrefab);
+        //enemy.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
        
     }
     public bool deckNotEmpty() {
