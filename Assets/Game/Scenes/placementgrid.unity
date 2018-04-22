@@ -274,19 +274,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c009f914569054d9fe4f4c44c53aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabwall: {fileID: 1368073565037312, guid: eb57312ad07e6824c9b22c9eaa375f26, type: 2}
-  prefabdoor: {fileID: 1359182888152838, guid: 7bce0fbb9416ce04da5a07aeecfcb6a0, type: 2}
+  prefabwall: {fileID: 1368073565037312, guid: 1f2125be741ef6441984e746384c6e56, type: 2}
+  prefabdoor: {fileID: 1359182888152838, guid: ba55a074870a5aa419e2968fbe2e111f, type: 2}
   prefabopen: {fileID: 1186192696862812, guid: 41aa13cf176d8c54f86cc4834d3364fe, type: 2}
   prefabroom: {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
-  prefabDoorRightOpen: {fileID: 1359182888152838, guid: 72b58fab5d295034b908afad7212027f,
+  prefabDoorRightOpen: {fileID: 1359182888152838, guid: ba55a074870a5aa419e2968fbe2e111f,
     type: 2}
-  prefabDoorLeftOpen: {fileID: 1359182888152838, guid: ad58b7da07727a540a84b919dd42160a,
+  prefabDoorLeftOpen: {fileID: 1359182888152838, guid: ba55a074870a5aa419e2968fbe2e111f,
     type: 2}
   prefabDoorBothOpen: {fileID: 1359182888152838, guid: ba55a074870a5aa419e2968fbe2e111f,
     type: 2}
-  prefabWallRightOpen: {fileID: 1368073565037312, guid: 05f7af6cb27528643acb0679f4ef0dfe,
+  prefabWallRightOpen: {fileID: 1368073565037312, guid: 1f2125be741ef6441984e746384c6e56,
     type: 2}
-  prefabWallLeftOpen: {fileID: 1368073565037312, guid: 1acb41b243ebd554ca9ed82bdda6edf8,
+  prefabWallLeftOpen: {fileID: 1368073565037312, guid: 1f2125be741ef6441984e746384c6e56,
     type: 2}
   prefabWallBothOpen: {fileID: 1368073565037312, guid: 1f2125be741ef6441984e746384c6e56,
     type: 2}

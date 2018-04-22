@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ArmoredGolemDX11_color
+  m_Shader: {fileID: 4800000, guid: fbba10cbb1e81014dbf9b33681596228, type: 3}
+  m_ShaderKeywords: _AOENABLED_ON _CUSTOMSPECMAP_ON _USEGLOSSMAP_ON
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AmbientOclusion:
+        m_Texture: {fileID: 2800000, guid: 1049de424d2e09b4688703cabe94fc19, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 97d4afd8bbb7ec34aacd50fb5577ef17, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CustomGloss:
+        m_Texture: {fileID: 2800000, guid: 02d3f3b528aa60d4ea869d616c7fe3b5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CustomSpecular:
+        m_Texture: {fileID: 2800000, guid: 0cfbc52ce17696e48813d9d892483565, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Height:
+        m_Texture: {fileID: 2800000, guid: 7f6ec34214e4ec44cb6b8d9856b2dfdd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Illum:
+        m_Texture: {fileID: 2800000, guid: 6373b06807fdb704baf3f03f2c5d03d6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: bf3843d8207f80c40b7c41393e2fe0eb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Reflection:
+        m_Texture: {fileID: 8900000, guid: 9b2d3ffa79837de4eb9a3cc995c07db3, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectionMask:
+        m_Texture: {fileID: 2800000, guid: 02d3f3b528aa60d4ea869d616c7fe3b5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AOEnabled: 1
+    - _AOPower: -0.94
+    - _CustomSpecMap: 1
+    - _DispPower: 0.1
+    - _EmissionLM: 0
+    - _HeightOverlay: 5.13
+    - _HeightPower: 0.21
+    - _IllumPower: 4.07
+    - _ReflectionPower: 0.26
+    - _Shininess: 0.5338659
+    - _SpecPower: 2.17
+    - _TesellationLevel: 20
+    - _UseGlossMap: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _IllumColor: {r: 0.25, g: 0.47241378, b: 1, a: 1}
+    - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

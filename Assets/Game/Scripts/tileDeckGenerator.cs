@@ -8,17 +8,32 @@ public class tileDeckGenerator{
     static double lengthTwoP = 0.2;
     static double lengthThreeP = 0.02;
     static double squareIsEmptyP = 0.1;
+    int[] keyCards = new int[3]; 
 
     public static List<boardTile> generateDeck(int cardCount, int seed = 0) {
+        int keyCount = 3;
+
         List<boardTile> newDeck = new List<boardTile>();
         System.Random randomNum = new System.Random();
+        int firstcard = (int)(randomNum.NextDouble() * cardCount);
+        int secondcard = 0;
+        int thirdcard = 0;
+        do {
+            secondcard = (int)(randomNum.NextDouble() * cardCount);
+            thirdcard = (int)(randomNum.NextDouble() * cardCount);
+        } while (thirdcard == secondcard || thirdcard == firstcard || secondcard == firstcard);
+
         for (int i = 0; i < cardCount; i++) {
-            newDeck.Add(generateTile(randomNum));
+            if (i == firstcard || i == secondcard || i == thirdcard) {
+                newDeck.Add(generateTile(randomNum, true));
+            } else {
+                newDeck.Add(generateTile(randomNum));
+            }
         }
         return newDeck;
     }
 
-    private static boardTile generateTile(System.Random randomNum) {
+    private static boardTile generateTile(System.Random randomNum, bool keycard = false) {
         boardTile tile;
         double xLenChance = randomNum.NextDouble();
         double yLenChance = randomNum.NextDouble();
@@ -44,7 +59,11 @@ public class tileDeckGenerator{
         boardTile.Wall bottom = boardTile.Wall.fullWall;
         boardTile.Wall left = boardTile.Wall.fullWall;
         boardTile.Wall door = boardTile.Wall.door;
-        tile = new boardTile(xLen, yLen);
+        if (keycard) {
+            tile = new boardTile(xLen, yLen, true);
+        } else {
+            tile = new boardTile(xLen, yLen);
+        }
         bool hasDoor = false;
         for(int y = 0; y<yLen; y++) {
             for(int x = 0;x<xLen; x++) {

@@ -6,8 +6,8 @@ public class boardTile{
     public int xLen { get; private set; }
     public int yLen { get; private set; }
     public tileSquare[,] squares { get; private set; }
-
-
+    public bool hasEnemies;
+    public bool hasKey;
     public enum Wall { fullWall, door, noWall };
     public enum edgeLoc { top, bottom, left, right };
     //public List<Door> doors = new List<Door>();
@@ -17,7 +17,7 @@ public class boardTile{
     
 
 
-    public boardTile(int _xLen, int _yLen) {
+    public boardTile(int _xLen, int _yLen, bool _hasKey = false) {
         xLen = _xLen;
         yLen = _yLen;
         squares = new tileSquare[yLen, xLen];

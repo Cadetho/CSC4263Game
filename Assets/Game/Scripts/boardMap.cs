@@ -32,7 +32,6 @@ public class boardMap{
         }
         return false;
     }
-
     /*
      * Check a tile to the board location
      * x,y location of top-left corner of tile
