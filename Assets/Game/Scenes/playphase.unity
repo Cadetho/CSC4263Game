@@ -113,32 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &159089076
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400016, guid: 8e0166dac27b8ac468faf10c42aa20b8, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300010, guid: 8e0166dac27b8ac468faf10c42aa20b8, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5bfa9e77f4361ba40832bfdbf4fe0257, type: 2}
-    - target: {fileID: 2300008, guid: 8e0166dac27b8ac468faf10c42aa20b8, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5bfa9e77f4361ba40832bfdbf4fe0257, type: 2}
-    - target: {fileID: 2300012, guid: 8e0166dac27b8ac468faf10c42aa20b8, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fd062881113d6804db70cc9687755555, type: 2}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8e0166dac27b8ac468faf10c42aa20b8, type: 3}
-  m_IsPrefabParent: 0
 --- !u!1 &176359361
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,11 +521,13 @@ MonoBehaviour:
   prefabWallRightOpen: {fileID: 0}
   prefabWallLeftOpen: {fileID: 0}
   prefabWallBothOpen: {fileID: 0}
+  prefabBoss: {fileID: 0}
   boardController: {fileID: 0}
   selectedCard: {fileID: 0}
   characterPrefab: {fileID: 0}
   enemyPrefab: {fileID: 0}
   mainPlayer: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!4 &1798164938
 Transform:
   m_ObjectHideFlags: 0

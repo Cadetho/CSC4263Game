@@ -1,0 +1,160 @@
+fileFormatVersion: 2
+guid: 8e0166dac27b8ac468faf10c42aa20b8
+timeCreated: 1524426356
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BuildingFace1_Alley
+    100002: BuildingFace1_AlleySide
+    100004: BuildingLowerWall1_Alley
+    100006: BuildingLowerWall1_AlleySide
+    100008: BuildingUpper1_AlleyEnd
+    100010: BuildingUpper1_AlleySide
+    100012: NeonTube1Alley
+    100014: Roof1Alley
+    100016: //RootNode
+    100018: Trim1_AlleyEnd
+    100020: Trim1_alleySide
+    100022: Window1_AlleyEnd
+    100024: Window1_AlleySide
+    400000: BuildingFace1_Alley
+    400002: BuildingFace1_AlleySide
+    400004: BuildingLowerWall1_Alley
+    400006: BuildingLowerWall1_AlleySide
+    400008: BuildingUpper1_AlleyEnd
+    400010: BuildingUpper1_AlleySide
+    400012: NeonTube1Alley
+    400014: Roof1Alley
+    400016: //RootNode
+    400018: Trim1_AlleyEnd
+    400020: Trim1_alleySide
+    400022: Window1_AlleyEnd
+    400024: Window1_AlleySide
+    2100000: None__window_glow3_blue_jpg
+    2100002: None__Tiles07_col_jpg
+    2100004: None__Concrete03_col_jpg
+    2100006: None__ConcretePainted_col_jpg
+    2100008: None__Tiles07dark_col_jpg
+    2100010: None__Brick03_col_jpg
+    2100012: None__neontube_blue_jpg
+    2100014: None__ConcreteLight_col_jpg
+    2100016: None__window_glow2_blue_jpg
+    2300000: BuildingFace1_Alley
+    2300002: BuildingFace1_AlleySide
+    2300004: BuildingLowerWall1_Alley
+    2300006: BuildingLowerWall1_AlleySide
+    2300008: BuildingUpper1_AlleyEnd
+    2300010: BuildingUpper1_AlleySide
+    2300012: NeonTube1Alley
+    2300014: Roof1Alley
+    2300016: Trim1_AlleyEnd
+    2300018: Trim1_alleySide
+    2300020: Window1_AlleyEnd
+    2300022: Window1_AlleySide
+    3300000: BuildingFace1_Alley
+    3300002: BuildingFace1_AlleySide
+    3300004: BuildingLowerWall1_Alley
+    3300006: BuildingLowerWall1_AlleySide
+    3300008: BuildingUpper1_AlleyEnd
+    3300010: BuildingUpper1_AlleySide
+    3300012: NeonTube1Alley
+    3300014: Roof1Alley
+    3300016: Trim1_AlleyEnd
+    3300018: Trim1_alleySide
+    3300020: Window1_AlleyEnd
+    3300022: Window1_AlleySide
+    4300000: BuildingFace1_Alley
+    4300002: BuildingFace1_AlleySide
+    4300004: BuildingLowerWall1_Alley
+    4300006: BuildingLowerWall1_AlleySide
+    4300008: BuildingUpper1_AlleyEnd
+    4300010: BuildingUpper1_AlleySide
+    4300012: NeonTube1Alley
+    4300014: Roof1Alley
+    4300016: Trim1_AlleyEnd
+    4300018: Trim1_alleySide
+    4300020: Window1_AlleyEnd
+    4300022: Window1_AlleySide
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

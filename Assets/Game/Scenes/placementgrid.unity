@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -332,28 +332,36 @@ MonoBehaviour:
     levelBasePrefabs:
     - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
     centerFloorPrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1542052149713748, guid: 492540f074ca32642a86a64208d78f51, type: 2}
     NSAlleyFloorPrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1323207338186574, guid: 303dad76351fd06448f3724fbea79de4, type: 2}
     NSOpenFloorPrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1783762134901728, guid: 12fc0c176689a094a82ded5fb13aa7a4, type: 2}
     EWAlleyFloorPrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1432127020070650, guid: 7a6f61e62c8316b4baa82177779885b6, type: 2}
     EWOpenFloorPrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1376872317025304, guid: 887ab500f5be2b244b34d6395ea1869f, type: 2}
     nullTilePrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1542052149713748, guid: 492540f074ca32642a86a64208d78f51, type: 2}
     openCornerPrefabVariations:
-    - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+    - {fileID: 1859354421112236, guid: a8bc34f1afa9da8478cf9b0389a78e35, type: 2}
     buildingPrefabVariations:
     - centerRoofPrefabVariations:
-      - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+      - {fileID: 1056900688091446, guid: b140425ba9672334ab876cdac6887f5b, type: 2}
       openWallPrefabVariations:
-      - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+      - {fileID: 1279696099692604, guid: 11b4e30d1f50b2444a6c33c510aecfe7, type: 2}
       pathWallPrefabVariations:
-      - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+      - {fileID: 1336908833722328, guid: 4620d1b576e650540827d5b34f4a3a02, type: 2}
       closedWallPrefabVariations:
-      - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
+      - {fileID: 1184934602967870, guid: 2bb78e5e2ae5179408aa920f168af872, type: 2}
+    - centerRoofPrefabVariations:
+      - {fileID: 1056900688091446, guid: b140425ba9672334ab876cdac6887f5b, type: 2}
+      openWallPrefabVariations:
+      - {fileID: 1244040442024664, guid: c4025d824ff3feb4d9aa269d4c4f7414, type: 2}
+      pathWallPrefabVariations:
+      - {fileID: 1336908833722328, guid: 8060cc0b2ffe9374697ff0f15ea0fc90, type: 2}
+      closedWallPrefabVariations:
+      - {fileID: 1444126166821666, guid: f0901537e11de6c4d84849834e112fa4, type: 2}
 --- !u!1 &402049946
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ namespace Game.PlayPhase
             {
                 get
                 {
-                    return new Coords(tile.boardX, tile.boardY);
+                    return new Coords(tile.boardX, -tile.boardY);
                 }
             }
 

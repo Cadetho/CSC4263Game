@@ -48,22 +48,28 @@ namespace Game.PlayPhase
             List<Tile> newTiles = new List<Tile>();
 
             // Update tile data
+            String errmsg = "Generating Play Environment\nTilemap:\n";
             foreach (var pt in gm.masterBoard.board)
             {
-                Coords tileCoords = new Coords(pt.boardX, pt.boardY);
+                Coords tileCoords = new Coords(pt.boardX, -pt.boardY);
                 Tile tile = GetTile(tileCoords);
+                Debug.Log("EnvGen - Checked for tile @ " + tileCoords);
                 if (tile == null)
                 {
+                    errmsg += "New ";
+                    Debug.Log("EnvGen - No tile found @ " + tileCoords);
                     // placedTile is new.
                     tile = AddTile(pt);
                     newTiles.Add(tile);
 
                     SetAdjacentTiles(tile);
                 }
+                errmsg += "Placed Tile @ " + tileCoords + " -> " + tile.Coords +"\n";
             }
 
             UpdateBuildings(newTiles);
-
+            Logger.Debug(errmsg);
+            Debug.Log(errmsg);
             // Place GameObjects for empty spaces bordering placed tiles
             //foreach (var emptySpace in emptySpaces)
             //{
@@ -103,6 +109,7 @@ namespace Game.PlayPhase
         private Tile AddTile(placedTile pt)
         {
             Tile tile = new Tile(pt, envPrefabs, tileContainer);
+            Debug.Log("EnvGen - Adding new tile @ " + tile.Coords);
             tiles.Add(tile.Coords, tile);
             RemoveEmpty(tile.Coords);
             return tile;
