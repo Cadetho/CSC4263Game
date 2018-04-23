@@ -35,12 +35,14 @@ public class MeleeWeapon : MonoBehaviour
     {
         if (active)
         {
-            if (wielder.tag == "Player" && col.tag == "Enemy")
-            {
-                //Debug.Log(col.name + " has been hit.");
-                col.GetComponent<CharacterStats>().TakeDamage(attackPower);
-                col.GetComponent<EnemyController>().GetHit(); // Maybe make a Controller interface or super class
-            }
+			if (wielder.tag == "Player" && col.tag == "Enemy") {
+				//Debug.Log(col.name + " has been hit.");
+				col.GetComponent<CharacterStats> ().TakeDamage (attackPower);
+				col.GetComponent<EnemyController> ().GetHit (); // Maybe make a Controller interface or super class
+			} else if (wielder.tag == "Player" && col.tag == "Boss") {
+				col.GetComponent<CharacterStats> ().TakeDamage (attackPower);
+				col.GetComponent<BossController> ().getHit ();
+			}
             else if (wielder.tag == "Enemy" && col.tag == "Player")
             {
                 //Debug.Log(col.name + " has been hit.");

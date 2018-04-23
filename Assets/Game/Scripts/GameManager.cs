@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour {
     }
     public void GenerateLevel() {
         List<GameObject> prefabs = new List<GameObject>();
-        bossDoor = Instantiate(prefabWallBothOpen, gridToTop(0, 1), qforward);
+        //bossDoor = Instantiate(prefabWallBothOpen, gridToTop(0, 1), qforward);
         boss = Instantiate(prefabBoss, GridToPosition(0, 2), qforward);
         foreach (placedTile t in masterBoard.board) {
 
@@ -365,6 +365,9 @@ public class GameManager : MonoBehaviour {
         pos.Set(x -1, 0, -y);
         return pos;
     }
+	public void inBossRoom(){
+		boss.GetComponent<BossController>().playerInRoom ();
+	}
     // GENERATE A TEST TILEMAP
     void TestMap()
     {
