@@ -25,6 +25,7 @@ public class CharacterController : MonoBehaviour
 	public Camera sceneCamera;
     // Navmesh variables
     [Space]
+	public GameManager gm;
     public bool useNavMesh = false;
     private UnityEngine.AI.NavMeshAgent agent;
     private float navMeshSpeed;
@@ -116,6 +117,7 @@ public class CharacterController : MonoBehaviour
         leftPunch = leftFist.GetComponent<MeleeWeapon>();
         rightPunch = leftFist.GetComponent<MeleeWeapon>();
         stats = GetComponent<CharacterStats>();
+		gm = GameObject.Find ("GameManager");
     }
 
     void Inputs()
@@ -142,7 +144,9 @@ public class CharacterController : MonoBehaviour
 	void Update()
 	{
 		// make sure there is an animator on this character
-
+		if (transform.position.z < -1 && transform.position.z > -3 && transform.position.x > -1 && transform.position.x < 1) {
+			gm.inBossRoom ();
+		}
 		if (animator)
 		{
 			Inputs();

@@ -100,6 +100,8 @@ GameObject:
   - component: {fileID: 401630}
   - component: {fileID: 9526892}
   - component: {fileID: 114910413086419872}
+  - component: {fileID: 54768665194407436}
+  - component: {fileID: 114635632628513154}
   m_Layer: 0
   m_Name: ArmoredGolem
   m_TagString: Untagged
@@ -400,7 +402,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122220}
   m_LocalRotation: {x: -0.000000021855694, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.69574, y: -6.165391, z: -5.0872746}
+  m_LocalPosition: {x: 4.123247, y: -5.018225, z: -5.193131}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 485548}
@@ -850,6 +852,36 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122220}
   m_IsPrefabParent: 1
+--- !u!54 &54768665194407436
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122220}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114635632628513154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b5c382a7c2c8647947191d1c22c8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 300
+  shield: 0
+  attackPower: 0
 --- !u!114 &114910413086419872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,10 +893,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc50a9b7bc08cfb478386a97f17c893b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paceTime: 0
-  pauseTime: 2
   playerInBossRoom: 0
   targetPlayer: {fileID: 0}
   attackRange: 1
-  moveSpeed: 3
   pacingTo: {x: 0, y: 0, z: 0}
+  groundSlamCooldown: 15
+  groundSlamCooldownTime: 0
+  groundSlamPrepTime: 1
+  groundSlamPrefab: {fileID: 1296612773657340, guid: df623f42a3af47a4a91b3af6d5dffb81,
+    type: 2}
