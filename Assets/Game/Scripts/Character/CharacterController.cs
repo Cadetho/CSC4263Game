@@ -117,7 +117,7 @@ public class CharacterController : MonoBehaviour
         leftPunch = leftFist.GetComponent<MeleeWeapon>();
         rightPunch = leftFist.GetComponent<MeleeWeapon>();
         stats = GetComponent<CharacterStats>();
-		gm = GameObject.Find ("GameManager");
+		gm = GameObject.Find ("GameManager").GetComponent<GameManager>();
     }
 
     void Inputs()

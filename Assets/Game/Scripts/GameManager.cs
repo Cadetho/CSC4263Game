@@ -366,7 +366,7 @@ public class GameManager : MonoBehaviour {
         return pos;
     }
 	public void inBossRoom(){
-		boss.playerInRoom ();
+		boss.GetComponent<BossController>().playerInRoom ();
 	}
     // GENERATE A TEST TILEMAP
     void TestMap()
