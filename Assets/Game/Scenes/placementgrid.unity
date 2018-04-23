@@ -342,7 +342,7 @@ MonoBehaviour:
     EWOpenFloorPrefabVariations:
     - {fileID: 1376872317025304, guid: 887ab500f5be2b244b34d6395ea1869f, type: 2}
     nullTilePrefabVariations:
-    - {fileID: 1542052149713748, guid: 492540f074ca32642a86a64208d78f51, type: 2}
+    - {fileID: 1916829168409202, guid: afb33539b26638049a474e6bcb8c918e, type: 2}
     openCornerPrefabVariations:
     - {fileID: 1859354421112236, guid: a8bc34f1afa9da8478cf9b0389a78e35, type: 2}
     buildingPrefabVariations:
@@ -1017,6 +1017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23609c4376561734cbd846ccc280bb0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hand: {fileID: 1992919696}
   gm: {fileID: 52193956}
 --- !u!114 &1992919696
 MonoBehaviour:

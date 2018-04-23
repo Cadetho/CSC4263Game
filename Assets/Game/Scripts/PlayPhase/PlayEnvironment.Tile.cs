@@ -171,11 +171,14 @@ namespace Game.PlayPhase
             private Wall wall;
             private Transform parent;
             private GameObject floor;
+            private GameObject barrier;
+            public bool edge;
 
             public Border(Wall wall, Transform parent)
             {
                 this.wall = wall;
                 this.Parent = parent;
+                edge = true;
             }
 
             public Wall Wall
@@ -193,6 +196,11 @@ namespace Game.PlayPhase
                         GameObject.Destroy(floor);
                         floor = null;
                     }
+                    if (barrier != null)
+                    {
+                        GameObject.Destroy(barrier);
+                        barrier = null;
+                    }
                     wall = updated;
                 }
             }
@@ -207,7 +215,8 @@ namespace Game.PlayPhase
                 set
                 {
                     floor = value;
-                    floor.transform.parent = parent;
+                    //floor.transform.parent = parent;
+                    floor.transform.localPosition = Vector3.zero;
                 }
             }
 
@@ -221,6 +230,21 @@ namespace Game.PlayPhase
                 set
                 {
                     parent = value;
+                }
+            }
+
+            public GameObject Barrier
+            {
+                get
+                {
+                    return barrier;
+                }
+
+                set
+                {
+                    barrier = value;
+                    //barrier.transform.parent = parent;
+                    barrier.transform.localPosition = Vector3.zero;
                 }
             }
         }

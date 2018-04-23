@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour{
 
+    [SerializeField]
     private playerHand hand;
     public GameManager gm;
 

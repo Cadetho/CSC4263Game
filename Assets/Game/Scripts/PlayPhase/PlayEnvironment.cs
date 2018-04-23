@@ -19,7 +19,25 @@ namespace Game.PlayPhase
         private Transform borderContainer;
         private Dictionary<Coords, Building> buildings = new Dictionary<Coords, Building>();
         private Dictionary<Coords, Tile> tiles = new Dictionary<Coords, Tile>();
-        private Dictionary<Coords, GameObject> emptySpaces = new Dictionary<Coords, GameObject>();
+        private Dictionary<Coords, Empty> emptySpaces = new Dictionary<Coords, Empty>();
+
+        private class Empty
+        {
+            public GameObject go;
+
+            public Empty(GameObject go)
+            {
+                this.go = go;
+            }
+
+            public bool Destroy()
+            {
+                if (go == null) return false;
+                GameObject.Destroy(go);
+                go = null;
+                return true;
+            }
+        }
 
         #endregion
 
@@ -70,25 +88,22 @@ namespace Game.PlayPhase
             UpdateBuildings(newTiles);
             Logger.Debug(errmsg);
             Debug.Log(errmsg);
-            // Place GameObjects for empty spaces bordering placed tiles
+            //Place GameObjects for empty spaces bordering placed tiles
             //foreach (var emptySpace in emptySpaces)
             //{
-            //    if (emptySpace.Value == null)
+            //    Empty empty = emptySpace.Value;
+            //    if (empty.go == null)
             //    {
             //        GameObject go = new GameObject("Empty (" + emptySpace.Key + ")");
             //        go.transform.parent = tileContainer;
             //        go.transform.position = Utility.TranslateGridPosition(emptySpace.Key);
             //        GameObject.Instantiate(envPrefabs.NullTilePrefab, go.transform);
-            //        emptySpaces[emptySpace.Key] = go;
+            //        //emptySpaces[emptySpace.Key] = new Empty(go);
+            //        empty.go = go;
+            //        if (empty.go == null)
+            //            Debug.Log("ERROR: Empty is null at " + emptySpace.Key);
             //    }
             //}
-
-            // Update GameObjects for new tiles & surrounding tiles & buildings
-            // Place floors:
-            //   Place Tile centers ; done in Tile creation
-            //   Place Wall, Alley, & Open floors at Tile Edges ; done in SetAdjacentTiles
-
-            // Place Building GOs ; done in UpdateBuildings
         }
 
         /// <summary>
@@ -117,11 +132,15 @@ namespace Game.PlayPhase
 
         private void SetAdjacentTiles(Tile tile)
         {
-            Tile northAdjTile = GetTile(tile.Coords + Coords.up);
-            Tile eastAdjTile = GetTile(tile.Coords + Coords.right);
-            Tile southAdjTile = GetTile(tile.Coords + Coords.down);
-            Tile westAdjTile = GetTile(tile.Coords + Coords.left);
-
+            Coords upOne = tile.Coords + Coords.up;
+            Coords rightOne = tile.Coords + Coords.right;
+            Coords downOne = tile.Coords + Coords.down;
+            Coords leftOne = tile.Coords + Coords.left;
+            Tile northAdjTile = GetTile(upOne);
+            Tile eastAdjTile = GetTile(rightOne);
+            Tile southAdjTile = GetTile(downOne);
+            Tile westAdjTile = GetTile(leftOne);
+            Debug.Log("Checking adjacent tiles around " + tile.Coords);
             if (northAdjTile != null)
             {
                 //tile.NorthAdjTile = northAdjTile;
@@ -129,11 +148,12 @@ namespace Game.PlayPhase
 
                 // Set north border to the existing south border of northAdjTile.
                 tile.NorthBorder = northAdjTile.SouthBorder;
+                tile.NorthBorder.edge = false;
                 tile.NorthBorder.Wall = tile.NorthWall;
             }
             else
             {
-                AddEmpty(tile.Coords + Coords.up);
+                AddEmpty(upOne);
 
                 // Create a new border.
                 Transform borderParent = new GameObject("Border North of Tile " + tile.Coords).transform;
@@ -149,11 +169,12 @@ namespace Game.PlayPhase
 
                 // Set east border to the existing west border of eastAdjTile.
                 tile.EastBorder = eastAdjTile.WestBorder;
+                tile.EastBorder.edge = false;
                 tile.EastBorder.Wall = tile.EastWall;
             }
             else
             {
-                AddEmpty(tile.Coords + Coords.up);
+                AddEmpty(rightOne);
 
                 // Create a new border.
                 Transform borderParent = new GameObject("Border East of Tile " + tile.Coords).transform;
@@ -169,11 +190,12 @@ namespace Game.PlayPhase
 
                 // Set south border to the existing north border of southAdjTile.
                 tile.SouthBorder = southAdjTile.NorthBorder;
+                tile.SouthBorder.edge = false;
                 tile.SouthBorder.Wall = tile.SouthWall;
             }
             else
             {
-                AddEmpty(tile.Coords + Coords.up);
+                AddEmpty(downOne);
 
                 // Create a new border.
                 Transform borderParent = new GameObject("Border South of Tile " + tile.Coords).transform;
@@ -189,11 +211,12 @@ namespace Game.PlayPhase
 
                 // Set west border to the existing east border of westAdjTile.
                 tile.WestBorder = westAdjTile.EastBorder;
+                tile.WestBorder.edge = false;
                 tile.WestBorder.Wall = tile.WestWall;
             }
             else
             {
-                AddEmpty(tile.Coords + Coords.up);
+                AddEmpty(leftOne);
 
                 // Create a new border.
                 Transform borderParent = new GameObject("Border West of Tile " + tile.Coords).transform;
@@ -222,26 +245,53 @@ namespace Game.PlayPhase
                         prefab = openFloorPrefab;
                         break;
                 }
-                Transform bt = GameObject.Instantiate(prefab, border.Parent).transform;
-                bt.localPosition = Vector3.zero;
+                //Transform bt = GameObject.Instantiate(prefab, border.Parent).transform;
+                //bt.localPosition = Vector3.zero;
+                border.Floor = GameObject.Instantiate(prefab, border.Parent);
+                // create a barrier
+                if (border.edge == true && border.Barrier == null)
+                {
+                    border.Barrier = GameObject.Instantiate(envPrefabs.NullTilePrefab, border.Parent);
+                }
             }
         }
 
         private void AddEmpty(Coords coords)
         {
-            emptySpaces[coords] = null;
+            //GameObject empty = new GameObject("Empty (" + coords + ")");
+            //empty.transform.parent = tileContainer;
+            //empty.transform.position = Utility.TranslateGridPosition(coords);
+            ////GameObject.Instantiate(envPrefabs.NullTilePrefab, empty.transform);
+            //emptySpaces[coords] = new Empty(GameObject.Instantiate(envPrefabs.NullTilePrefab, empty.transform));
+            //Debug.Log("Empty set at " + coords);
         }
 
         private void RemoveEmpty(Coords coords)
         {
-            GameObject empty;
-            if (emptySpaces.TryGetValue(coords, out empty)) {
-                if (empty != null)
-                {
-                    GameObject.Destroy(empty);
-                }
-                emptySpaces.Remove(coords);
+            Debug.Log("Remove empty @ " + coords);
+            if (! emptySpaces.ContainsKey(coords) )
+            {
+                Debug.Log("No empty to remove @ " + coords);
+                return;
             }
+            bool destroyed = emptySpaces[coords].Destroy();
+            if (destroyed == false) Debug.Log("ERROR: Empty was null @ " + coords);
+            //Debug.Log("Removing empty @ " + coords);
+            //GameObject empty;
+            //if (emptySpaces.TryGetValue(coords, out empty))
+            //{
+            //    if (empty != null)
+            //    {
+            //        empty.SetActive(false);
+            //        GameObject.Destroy(empty);
+            //        //emptySpaces.Remove(coords);
+            //        Debug.Log("Removed empty @ " + coords);
+            //    }
+            //    else
+            //        Debug.Log("ERROR: Empty at " + coords + " was null.");
+            //}
+            //else
+            //    Debug.Log("No empty found @ " + coords);
         }
 
         /// <summary>
