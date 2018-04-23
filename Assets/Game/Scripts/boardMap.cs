@@ -26,7 +26,7 @@ public class boardMap{
                     board.Add(new placedTile(x+j, -y+i, newTile.squares[i, j]));
                     tempTile = new boardTile(1, 1);
                     tempTile.setSquare(0, 0, new boardTile.Wall[] { newTile.squares[i, j].getTop(), newTile.squares[i, j].getRight(), newTile.squares[i, j].getBottom(), newTile.squares[i, j].getLeft() });
-                    boardTiles[y + center + i, x + center + j] = tempTile;
+                    boardTiles[y + center - i, x + center + j] = tempTile;
                 }
             }
             return true;
@@ -92,7 +92,7 @@ public class boardMap{
         bool clear = true;
         for (int i = 0; i < yLen; i++) {
             for (int j = 0; j < xLen; j++) {
-                if (boardTiles[y + i, x + j] != null && !newTile.squares[i, j].isEmpty()) {
+                if (boardTiles[y - i, x + j] != null && !newTile.squares[i, j].isEmpty()) {
                     clear = false;
                 }
             }

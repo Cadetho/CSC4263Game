@@ -88,8 +88,8 @@ public class GameManager : MonoBehaviour {
         bossTile.setSquare(0, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.fullWall });
         bossTile.setSquare(1, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.noWall });
         bossTile.setSquare(2, 2, new boardTile.Wall[] { boardTile.Wall.noWall, boardTile.Wall.fullWall, boardTile.Wall.fullWall, boardTile.Wall.noWall });
+        masterBoard.placeTile(-1, -1, bossTile, true);
 
-        masterBoard.placeTile(0, -2, bossTile);
         GameObject bossRoomCard = boardController.createGridCard(bossTile);
         boardController.setGridCardSpot(-1, -1, bossTile, bossRoomCard);
     }
@@ -106,8 +106,8 @@ public class GameManager : MonoBehaviour {
     }
     public void GenerateLevel() {
         List<GameObject> prefabs = new List<GameObject>();
-        bossDoor = Instantiate(prefabWallBothOpen, gridToTop(0, -1), qforward);
-        boss = Instantiate(prefabBoss, GridToPosition(0, -2), qforward);
+        bossDoor = Instantiate(prefabWallBothOpen, gridToTop(0, 1), qforward);
+        boss = Instantiate(prefabBoss, GridToPosition(0, 2), qforward);
         foreach (placedTile t in masterBoard.board) {
 
             boardTile.Wall top = t.square.getTop();
