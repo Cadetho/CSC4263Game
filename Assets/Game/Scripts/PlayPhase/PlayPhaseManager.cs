@@ -15,7 +15,6 @@ namespace Game.PlayPhase
         public EnvironmentPrefabs envPrefabs;
 
         private GameObject playPhaseContainer;
-        private GameObject enemiesContainer;
         private PlayEnvironment env;
         private GameObject player;
         private List<GameObject> enemies;
@@ -41,8 +40,6 @@ namespace Game.PlayPhase
             }
 
             playPhaseContainer = new GameObject("Play Phase Root");
-            enemiesContainer = new GameObject("Enemies");
-            enemiesContainer.transform.parent = playPhaseContainer.transform;
             env = new PlayEnvironment(this, playPhaseContainer.transform);
         }
 
@@ -89,29 +86,10 @@ namespace Game.PlayPhase
                 foreach (var point in spawnPoints)
                 {
                     GameObject enemy = Instantiate(enemyPrefabs.gruntPrefab);
-<<<<<<< HEAD
-                    enemy.transform.parent = enemiesContainer.transform;
-=======
->>>>>>> CadeTileGen
                     enemy.transform.localPosition = roomCoords + new Vector3(point.x, 0.1f, point.y);
                     enemies.Add(enemy);
                 }
             }
-<<<<<<< HEAD
-
-            // spawn boss
-            if (enemyPrefabs.bossPrefab != null)
-            {
-                Debug.Log("Spawning boss.");
-                Vector3 spawn = Utility.TranslateGridPosition(new Vector2(0, -2));
-
-                GameObject enemy = Instantiate(enemyPrefabs.bossPrefab);
-                enemy.transform.parent = enemiesContainer.transform;
-                enemy.transform.localPosition = spawn;
-                enemies.Add(enemy);
-            }
-=======
->>>>>>> CadeTileGen
         }
 
         protected void SpawnPlayer()

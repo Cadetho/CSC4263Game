@@ -330,11 +330,7 @@ MonoBehaviour:
   enemyPrefabs:
     gruntPrefab: {fileID: 1270526129368252, guid: 24c8578c164cc2a4aa1fa37eb08bde74,
       type: 2}
-<<<<<<< HEAD
-    bossPrefab: {fileID: 122220, guid: 08d305a0e45138f48a239a2d83c0e4e2, type: 2}
-=======
     bossPrefab: {fileID: 0}
->>>>>>> CadeTileGen
   envPrefabs:
     levelBasePrefabs:
     - {fileID: 1278613288534774, guid: 04308f0d4f30fd140b045fe3089e2cc5, type: 2}
