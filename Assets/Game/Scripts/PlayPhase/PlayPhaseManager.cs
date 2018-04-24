@@ -89,11 +89,15 @@ namespace Game.PlayPhase
                 foreach (var point in spawnPoints)
                 {
                     GameObject enemy = Instantiate(enemyPrefabs.gruntPrefab);
+<<<<<<< HEAD
                     enemy.transform.parent = enemiesContainer.transform;
+=======
+>>>>>>> CadeTileGen
                     enemy.transform.localPosition = roomCoords + new Vector3(point.x, 0.1f, point.y);
                     enemies.Add(enemy);
                 }
             }
+<<<<<<< HEAD
 
             // spawn boss
             if (enemyPrefabs.bossPrefab != null)
@@ -106,6 +110,8 @@ namespace Game.PlayPhase
                 enemy.transform.localPosition = spawn;
                 enemies.Add(enemy);
             }
+=======
+>>>>>>> CadeTileGen
         }
 
         protected void SpawnPlayer()
