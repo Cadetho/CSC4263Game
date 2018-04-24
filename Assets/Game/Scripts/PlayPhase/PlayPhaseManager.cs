@@ -16,6 +16,8 @@ namespace Game.PlayPhase
 
         private GameObject playPhaseContainer;
         private PlayEnvironment env;
+        private GameObject player;
+        private List<GameObject> enemies;
 
         #endregion
 
@@ -47,8 +49,8 @@ namespace Game.PlayPhase
         public void StartPhase()
         {
             GenerateLevel();
-            SpawnEnemies();
             SpawnPlayer();
+            SpawnEnemies();
 
             // Activate the Play Phase root & make all Play Phase GameObjects it visible.
             playPhaseContainer.SetActive(true);
@@ -63,18 +65,52 @@ namespace Game.PlayPhase
         protected void SpawnEnemies()
         {
             Logger.Debug("SpawnEnemies");
+            enemies = new List<GameObject>();
+            foreach (var tile in gameManager.masterBoard.board)
+            {
+                int spawnCount = 3;
+
+                if (tile.boardX == 0 && tile.boardY == 0)
+                    spawnCount = 0;
+
+                Vector3 roomCoords = Utility.TranslateGridPosition(new Vector2(tile.boardX, -tile.boardY));
+                List<Vector2> spawnPoints = new List<Vector2>();
+
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    Vector2 offset;
+                    offset = new Vector2((Random.value - 0.5f) * 10f, (Random.value - 0.5f) * 10f);
+                    spawnPoints.Add(offset);
+                }
+
+                foreach (var point in spawnPoints)
+                {
+                    GameObject enemy = Instantiate(enemyPrefabs.gruntPrefab);
+                    enemy.transform.localPosition = roomCoords + new Vector3(point.x, 0.1f, point.y);
+                    enemies.Add(enemy);
+                }
+            }
         }
 
         protected void SpawnPlayer()
         {
             Logger.Debug("SpawnPlayer");
+            player = Instantiate(playerPrefab);
+            player.transform.localPosition = new Vector3(0f, 0.1f, 0f);
         }
 
         [ContextMenu("End Play Phase")]
         public void EndPhase()
         {
             Logger.Debug("Exit Play Phase");
+            DestroyPlayer();
             playPhaseContainer.SetActive(false);
+        }
+
+        private void DestroyPlayer()
+        {
+            Destroy(player);
+            player = null;
         }
     }
 

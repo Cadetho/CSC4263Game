@@ -299,6 +299,7 @@ MonoBehaviour:
     type: 2}
   mainPlayer: {fileID: 1992919695}
   boss: {fileID: 122220, guid: 08d305a0e45138f48a239a2d83c0e4e2, type: 2}
+  pm: {fileID: 52193958}
 --- !u!4 &52193957
 Transform:
   m_ObjectHideFlags: 0
@@ -324,9 +325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 52193956}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 1300319127133076, guid: ea6fdbb0ac5b22048a28c5f73a5fd44d,
+    type: 2}
   enemyPrefabs:
-    gruntPrefab: {fileID: 0}
+    gruntPrefab: {fileID: 1270526129368252, guid: 24c8578c164cc2a4aa1fa37eb08bde74,
+      type: 2}
     bossPrefab: {fileID: 0}
   envPrefabs:
     levelBasePrefabs:
@@ -1027,6 +1030,10 @@ Prefab:
     - target: {fileID: 401630, guid: 08d305a0e45138f48a239a2d83c0e4e2, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 122220, guid: 08d305a0e45138f48a239a2d83c0e4e2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d305a0e45138f48a239a2d83c0e4e2, type: 2}
