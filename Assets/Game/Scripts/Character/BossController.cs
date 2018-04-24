@@ -11,7 +11,7 @@ public class BossController : MonoBehaviour {
     public int attackRange;
     Animator bossAnimator;
 	
-    private float moveSpeed = 0.1f;
+    private float moveSpeed = 20f;
 	
     public Vector3 pacingTo;
    
@@ -92,14 +92,14 @@ public class BossController : MonoBehaviour {
 				}
 			}
 			if (transform.position != pacingTo) {
-				transform.position = Vector3.MoveTowards (transform.position, pacingTo, 0.002f);
+				transform.position = Vector3.MoveTowards (transform.position, pacingTo, .025f);
 			} else {
 				switchToIdle ();
 			}
 			break;
 		case BossState.following:
 			if (vectorToPlayer.magnitude > attackRange) {
-				transform.position = Vector3.MoveTowards (transform.position, targetPlayer.transform.position, 0.002f);
+				transform.position = Vector3.MoveTowards (transform.position, targetPlayer.transform.position, .025f);
 				transform.LookAt (targetPlayer.transform.position);
 			} else {
 				switchToAttacking ();
@@ -236,8 +236,8 @@ public class BossController : MonoBehaviour {
 		Destroy (groundSlam);
 	}
     public Vector3 choosePointInBossRoom() {
-        float xLoc = Random.Range(-0.8f,0.8f);
-        float yLoc = Random.Range(-1.2f,-2.8f);
+        float xLoc = Random.Range(-23f,23f);
+        float yLoc = Random.Range(-17f,-64f);
         Debug.Log(" Moving to: " + xLoc + " " + yLoc);
         Vector3 returnVec = new Vector3(xLoc, 0, yLoc);
         return returnVec;

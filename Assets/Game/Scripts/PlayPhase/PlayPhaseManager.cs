@@ -13,12 +13,13 @@ namespace Game.PlayPhase
         public GameObject playerPrefab;
         public EnemyPrefabs enemyPrefabs;
         public EnvironmentPrefabs envPrefabs;
+        public GameObject bossPrefab;
 
         private GameObject playPhaseContainer;
         private PlayEnvironment env;
         private GameObject player;
         private List<GameObject> enemies;
-
+        private GameObject boss;
         #endregion
 
         #region Initialization
@@ -64,6 +65,8 @@ namespace Game.PlayPhase
 
         protected void SpawnEnemies()
         {
+            boss = Instantiate(bossPrefab);
+            boss.transform.localPosition = Utility.TranslateGridPosition(new Vector2(0, -2));
             Logger.Debug("SpawnEnemies");
             enemies = new List<GameObject>();
             foreach (var tile in gameManager.masterBoard.board)

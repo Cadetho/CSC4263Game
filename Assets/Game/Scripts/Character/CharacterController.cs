@@ -143,8 +143,9 @@ public class CharacterController : MonoBehaviour
 
 	void Update()
 	{
-		// make sure there is an animator on this character
-		if (transform.position.z < -1 && transform.position.z > -3 && transform.position.x > -1 && transform.position.x < 1) {
+        // make sure there is an animator on this character
+        Debug.Log(transform.position);
+		if (transform.position.z < -17 && transform.position.z > -64 && transform.position.x > -23 && transform.position.x < 23) {
 			gm.inBossRoom ();
 		}
 		if (animator)
