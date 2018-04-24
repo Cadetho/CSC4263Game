@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4368749620002638}
-  - component: {fileID: 95797908061422682}
+  - component: {fileID: 65566773877027998}
   m_Layer: 0
   m_Name: Side_Closed_1
   m_TagString: Untagged
@@ -870,20 +870,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180221803679792}
   m_Mesh: {fileID: 4300000, guid: 74ced7a9cf012e741b140734bfbe3677, type: 3}
---- !u!95 &95797908061422682
-Animator:
-  serializedVersion: 3
+--- !u!65 &65566773877027998
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739989900905634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 74ced7a9cf012e741b140734bfbe3677, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 8.5, y: 10, z: 6.5}
+  m_Center: {x: 0, y: 5, z: -7}

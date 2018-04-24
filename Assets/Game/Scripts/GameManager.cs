@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
     private const int handSize = 7;
     public playerController mainPlayer;
     public GameObject boss;
+    public Game.PlayPhase.PlayPhaseManager pm;
 
 	void Start () {
         players.Add(mainPlayer);
@@ -57,13 +58,15 @@ public class GameManager : MonoBehaviour {
     }
     public void switchToPlayPhase() {
         boardController.hideBoard();
-        GenerateLevel();
+        //GenerateLevel();
         mainPlayer.hideHand();
-        GameObject character = Instantiate(characterPrefab);
-        character.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
+        //GameObject character = Instantiate(characterPrefab);
+        //character.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
+
         //GameObject enemy = Instantiate(enemyPrefab);
         //enemy.transform.position = new Vector3(-0.5f, 0.1f, -0.5f);
-       
+
+        pm.StartPhase();
     }
     public bool deckNotEmpty() {
         return (tileDeck.Count > 0);
